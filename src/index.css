@@ -1069,6 +1069,9 @@ button {
   padding: 32px 24px;
   transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .testimonial-card:hover {
@@ -1080,9 +1083,64 @@ button {
 .testimonial-avatar {
   width: 56px;
   height: 56px;
-  border-radius: var(--radius-md);
-  object-fit: cover;
+  border-radius: 12px;
   margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.testimonial-avatar span {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.testimonial-avatar svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.testimonial-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  width: 100%;
+}
+
+.skill-tag {
+  font-size: 13px;
+  height: 32px;
+  padding: 0 16px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 9999px;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  cursor: default;
+}
+
+.skill-tag:hover {
+  background: var(--hover-bg);
+  border-color: var(--hover-border);
+  color: var(--hover-color);
+}
+
+.skill-tag svg {
+  display: block;
+  flex-shrink: 0;
 }
 
 .testimonial-quote {

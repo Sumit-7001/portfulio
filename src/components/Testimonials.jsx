@@ -115,21 +115,21 @@ function getSkillIconAndColor(item) {
       return {
         color: '#A8B9CC',
         icon: (
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#A8B9CC" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 16A6 6 0 1 1 18 8"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#A8B9CC" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M15 9a3 3 0 1 0 0 6"/></svg>
         )
       };
     case 'JavaScript':
       return {
         color: '#F7DF1E',
         icon: (
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="#F7DF1E"><path d="M3 3h18v18H3z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24"><rect width="22" height="22" x="1" y="1" rx="4" fill="#F7DF1E"/><text x="4.5" y="16.5" fill="#000000" fontSize="13" fontFamily="-apple-system, sans-serif" fontWeight="900">JS</text></svg>
         )
       };
     case 'React.js':
       return {
         color: '#61DAFB',
         icon: (
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#61DAFB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(90 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(150 12 12)"/><circle cx="12" cy="12" r="1"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#61DAFB" strokeWidth="2.0" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(90 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(150 12 12)"/><circle cx="12" cy="12" r="1.5" fill="#61DAFB"/></svg>
         )
       };
     case 'Node.js':
@@ -296,43 +296,22 @@ function SkillCard({ skill, index }) {
         style={{
           background: `${skill.color}22`,
           color: skill.color,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          borderRadius: '12px',
         }}
       >
-        <span style={{ width: 24, height: 24, display: 'flex' }}>{skill.icon}</span>
+        <span>{skill.icon}</span>
       </div>
       <p className="testimonial-name" style={{ marginBottom: 16 }}>{skill.title}</p>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center' }}>
+      <div className="testimonial-tags">
         {skill.items.map((item) => {
           const info = getSkillIconAndColor(item);
           return (
             <span
               key={item}
+              className="skill-tag"
               style={{
-                fontSize: 13,
-                padding: '6px 16px',
-                background: 'rgba(255,255,255,0.04)',
-                border: '1px solid rgba(255,255,255,0.06)',
-                borderRadius: '9999px',
-                color: 'var(--color-text-secondary)',
-                fontWeight: 500,
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                transition: 'all 0.2s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = `${info.color}15`;
-                e.currentTarget.style.borderColor = `${info.color}33`;
-                e.currentTarget.style.color = info.color;
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(255,255,255,0.04)';
-                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)';
-                e.currentTarget.style.color = 'var(--color-text-secondary)';
+                '--hover-bg': `${info.color}15`,
+                '--hover-border': `${info.color}33`,
+                '--hover-color': info.color,
               }}
             >
               {info.icon}
