@@ -61,7 +61,7 @@ export default function Portfolio() {
             <p>A showcase of AI, ML &amp; web development projects</p>
           </div>
           <a
-            href="https://github.com"
+            href="https://github.com/Sumit-7001"
             target="_blank"
             rel="noopener noreferrer"
             className="portfolio-explore"
