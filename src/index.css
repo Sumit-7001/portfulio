@@ -755,28 +755,17 @@ button {
   max-width: 380px;
   border-radius: var(--radius-xl);
   overflow: hidden;
-  background: var(--gradient-glow);
-  padding: 3px;
-}
-
-.hero-portrait-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: var(--radius-xl);
-  padding: 3px;
   background: conic-gradient(from var(--angle, 0deg), var(--color-primary), var(--color-cyan), var(--color-pink), var(--color-primary));
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
   animation: rotate-gradient 4s linear infinite;
+  padding: 3px;
 }
 
 .hero-portrait-inner {
   border-radius: calc(var(--radius-xl) - 3px);
   overflow: hidden;
   background: var(--color-surface);
+  position: relative;
+  z-index: 1;
 }
 
 .hero-portrait {
