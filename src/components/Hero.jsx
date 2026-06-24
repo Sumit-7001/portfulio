@@ -1,9 +1,52 @@
+import { useState, useEffect, useCallback } from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import heroPortrait from '../assets/hero-portrait.png';
+
+const roles = [
+  'GenAI Developer',
+  'Web Developer',
+  'ML Enthusiast',
+  'Problem Solver',
+];
 
 export default function Hero() {
   const [leftRef, leftVisible] = useScrollAnimation({ threshold: 0.1 });
   const [rightRef, rightVisible] = useScrollAnimation({ threshold: 0.1 });
+
+  // Typing animation state
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [displayText, setDisplayText] = useState('');
+
+  const animateTyping = useCallback(() => {
+    const currentRole = roles[roleIndex];
+
+    if (!isDeleting) {
+      setDisplayText(currentRole.slice(0, charIndex + 1));
+      setCharIndex((prev) => prev + 1);
+
+      if (charIndex + 1 === currentRole.length) {
+        setTimeout(() => setIsDeleting(true), 2000);
+        return;
+      }
+    } else {
+      setDisplayText(currentRole.slice(0, charIndex - 1));
+      setCharIndex((prev) => prev - 1);
+
+      if (charIndex - 1 === 0) {
+        setIsDeleting(false);
+        setRoleIndex((prev) => (prev + 1) % roles.length);
+        return;
+      }
+    }
+  }, [charIndex, isDeleting, roleIndex]);
+
+  useEffect(() => {
+    const speed = isDeleting ? 40 : 80;
+    const timer = setTimeout(animateTyping, speed);
+    return () => clearTimeout(timer);
+  }, [animateTyping, isDeleting]);
 
   return (
     <section className="hero" id="hero">
@@ -29,6 +72,12 @@ export default function Hero() {
               <span className="gradient-text">GenAI &amp; Web</span>
               <span>Developer</span>
             </h1>
+
+            {/* Typing effect */}
+            <div className="hero-typing-wrapper">
+              <span className="hero-typing-text">{displayText}</span>
+              <span className="hero-typing-cursor" />
+            </div>
 
             <p className="hero-subtitle">
               Computer Science student passionate about building intelligent
@@ -111,6 +160,18 @@ export default function Hero() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div
+        className="hero-scroll-indicator"
+        onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+      >
+        <span>Scroll</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M12 5v14" />
+          <path d="M19 12l-7 7-7-7" />
+        </svg>
       </div>
     </section>
   );

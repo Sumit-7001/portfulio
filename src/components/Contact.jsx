@@ -1,8 +1,17 @@
+import { useState } from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 export default function Contact() {
   const [leftRef, leftVisible] = useScrollAnimation();
   const [rightRef, rightVisible] = useScrollAnimation();
+  const [toast, setToast] = useState('');
+
+  const copyToClipboard = (text, label) => {
+    navigator.clipboard.writeText(text).then(() => {
+      setToast(`${label} copied!`);
+      setTimeout(() => setToast(''), 2500);
+    });
+  };
 
   return (
     <section className="contact" id="contact">
@@ -30,11 +39,19 @@ export default function Contact() {
           >
             <h3>Contact Info</h3>
             <div className="contact-info-list">
-              <div className="contact-item">
+              <div
+                className="contact-item"
+                onClick={() => copyToClipboard('sahoosumit7001@gmail.com', 'Email')}
+                title="Click to copy"
+              >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="contact-icon"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                 <span>sahoosumit7001@gmail.com</span>
               </div>
-              <div className="contact-item">
+              <div
+                className="contact-item"
+                onClick={() => copyToClipboard('+917001340696', 'Phone')}
+                title="Click to copy"
+              >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="contact-icon"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                 <span>+91 7001340696</span>
               </div>
@@ -69,6 +86,14 @@ export default function Contact() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Copy Toast Notification */}
+      <div className={`copy-toast${toast ? ' show' : ''}`}>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="20 6 9 17 4 12" />
+        </svg>
+        {toast}
       </div>
     </section>
   );

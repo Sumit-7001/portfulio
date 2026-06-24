@@ -103,6 +103,7 @@ function PortfolioCard({ project, index }) {
       <div className="portfolio-card-overlay">
         <h3>{project.title}</h3>
         <p>{project.category}</p>
+        <p className="portfolio-card-desc">{project.desc}</p>
       </div>
     </div>
   );

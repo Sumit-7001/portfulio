@@ -1,11 +1,33 @@
 import { useState, useEffect } from 'react';
 
+const navLinks = [
+  { id: 'services', label: 'Skills' },
+  { id: 'experience', label: 'Journey' },
+  { id: 'portfolio', label: 'Projects' },
+  { id: 'testimonials', label: 'About' },
+  { id: 'contact', label: 'Contact' },
+];
+
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40);
+
+      // Determine active section
+      const sections = navLinks.map(l => document.getElementById(l.id)).filter(Boolean);
+      let current = '';
+      for (const section of sections) {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= 200) {
+          current = section.id;
+        }
+      }
+      setActiveSection(current);
+    };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -32,15 +54,33 @@ export default function Header() {
         </a>
 
         <nav className={`header-nav${menuOpen ? ' open' : ''}`}>
-          <a href="#services" onClick={(e) => handleNavClick(e, 'services')}>Skills</a>
-          <a href="#experience" onClick={(e) => handleNavClick(e, 'experience')}>Journey</a>
-          <a href="#portfolio" onClick={(e) => handleNavClick(e, 'portfolio')}>Projects</a>
-          <a href="#testimonials" onClick={(e) => handleNavClick(e, 'testimonials')}>About</a>
-          <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')}>Contact</a>
+          {navLinks.map((link) => (
+            <a
+              key={link.id}
+              href={`#${link.id}`}
+              className={activeSection === link.id ? 'active' : ''}
+              onClick={(e) => handleNavClick(e, link.id)}
+            >
+              {link.label}
+            </a>
+          ))}
         </nav>
 
         <div className="header-right">
           <span className="header-phone">+91 7001340696</span>
+          <a
+            href="/Sumit_Sahoo_GenAI_WebDeveloper_Resume.pdf"
+            download
+            className="header-resume-btn"
+            title="Download Resume"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            <span>Resume</span>
+          </a>
           <a href="mailto:sahoosumit7001@gmail.com" className="header-call-btn" aria-label="Email me">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <rect width="20" height="16" x="2" y="4" rx="2"/>

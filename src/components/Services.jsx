@@ -50,6 +50,7 @@ const tools = [
 export default function Services() {
   const [cardsRef, cardsVisible] = useScrollAnimation();
   const [contentRef, contentVisible] = useScrollAnimation();
+  const [barsRef, barsVisible] = useScrollAnimation({ threshold: 0.2 });
 
   return (
     <section className="services" id="services">
@@ -93,19 +94,22 @@ export default function Services() {
               embeddings, and prompt engineering.
             </p>
 
-            <div className="services-stats">
-              <div className="stat-item">
-                <h4>5+</h4>
-                <p>Projects Built</p>
-              </div>
-              <div className="stat-item">
-                <h4>9.72</h4>
-                <p>CGPA Score</p>
-              </div>
-              <div className="stat-item">
-                <h4>3+</h4>
-                <p>Tech Domains</p>
-              </div>
+            {/* Animated Skill Bars */}
+            <div ref={barsRef} className="skill-bars">
+              {tools.map((tool) => (
+                <div key={tool.name} className="skill-bar-item">
+                  <div className="skill-bar-header">
+                    <span className="skill-bar-name">{tool.name}</span>
+                    <span className="skill-bar-percent">{tool.level}%</span>
+                  </div>
+                  <div className="skill-bar-track">
+                    <div
+                      className={`skill-bar-fill${barsVisible ? ' animate' : ''}`}
+                      style={{ width: barsVisible ? `${tool.level}%` : '0%' }}
+                    />
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
