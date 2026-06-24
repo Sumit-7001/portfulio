@@ -1667,28 +1667,20 @@ button {
 }
 
 .contact-right {
-  background: var(--color-surface);
-  border: 1px solid var(--border-subtle);
+  background: conic-gradient(from var(--angle, 0deg), transparent 60%, rgba(139,92,246,0.3), rgba(41,151,255,0.3), transparent 90%);
+  animation: rotate-gradient 6s linear infinite;
   border-radius: var(--radius-xl);
-  padding: 36px;
+  padding: 1px;
   position: relative;
   overflow: hidden;
 }
 
-/* Animated gradient border glow */
-.contact-right::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: var(--radius-xl);
-  padding: 1px;
-  background: conic-gradient(from var(--angle, 0deg), transparent 60%, rgba(139,92,246,0.3), rgba(41,151,255,0.3), transparent 90%);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  animation: rotate-gradient 6s linear infinite;
-  pointer-events: none;
+.contact-right-inner {
+  background: var(--color-surface);
+  border-radius: calc(var(--radius-xl) - 1px);
+  padding: 36px;
+  width: 100%;
+  height: 100%;
 }
 
 .contact-right h3 {
