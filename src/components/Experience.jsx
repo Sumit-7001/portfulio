@@ -60,15 +60,17 @@ function TimelineItem({ item, index }) {
       className={`timeline-item fade-up${visible ? ' visible' : ''}`}
       style={{ transitionDelay: `${index * 0.1}s` }}
     >
-      <div className="timeline-left">
-        <p className="timeline-company">{item.company}</p>
-        <p className="timeline-date">{item.date}</p>
-      </div>
       <div className="timeline-dot-wrapper">
         <div className="timeline-dot"></div>
       </div>
-      <div className="timeline-right">
-        <p className="timeline-role">{item.role}</p>
+      <div className="timeline-card">
+        <div className="timeline-card-header">
+          <div>
+            <h3 className="timeline-role">{item.role}</h3>
+            <p className="timeline-company">{item.company}</p>
+          </div>
+          <span className="timeline-date">{item.date}</span>
+        </div>
         <p className="timeline-desc">{item.desc}</p>
       </div>
     </div>
