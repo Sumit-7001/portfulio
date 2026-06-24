@@ -1,4 +1,5 @@
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import avatar from '../assets/avatar.png';
 
 const technicalSkills = [
   {
@@ -74,6 +75,13 @@ export default function Services() {
                 </div>
               </div>
             ))}
+
+            <div 
+              className="services-avatar-card"
+              style={{ transitionDelay: `${technicalSkills.length * 0.1}s` }}
+            >
+              <img src={avatar} alt="Developer Illustration" className="services-avatar-img" />
+            </div>
           </div>
 
           {/* Content */}
