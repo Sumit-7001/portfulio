@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import contactIllustration from '../assets/contact-illustration-transparent.png';
 
 export default function Contact() {
   const [leftRef, leftVisible] = useScrollAnimation();
+  const [middleRef, middleVisible] = useScrollAnimation();
   const [rightRef, rightVisible] = useScrollAnimation();
   const [toast, setToast] = useState('');
 
@@ -31,6 +33,17 @@ export default function Contact() {
               Open to internships &amp; collaborations!{' '}
               <a href="mailto:sahoosumit7001@gmail.com">Let's talk →</a>
             </p>
+          </div>
+
+          <div
+            ref={middleRef}
+            className={`contact-middle fade-up fade-up-delay-1${middleVisible ? ' visible' : ''}`}
+          >
+            <img
+              src={contactIllustration}
+              alt="Sumit Kumar Sahoo 3D Avatar"
+              className="contact-illustration"
+            />
           </div>
 
           <div

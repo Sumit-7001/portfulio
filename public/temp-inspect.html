@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Inspect Transparent PNG</title>
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: sans-serif;
+      padding: 40px;
+    }
+    .preview-container {
+      background: linear-gradient(135deg, #1e1b4b 0%, #311042 50%, #083344 100%);
+      padding: 40px;
+      border-radius: 12px;
+      display: inline-block;
+      border: 1px solid #333;
+    }
+    img {
+      max-width: 400px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <h1>Transparent PNG Verification</h1>
+  <p>The image below is rendered on a purple-blue dark gradient background. If background removal was successful, the avatar should blend perfectly without any solid black box or borders around it.</p>
+  
+  <div class="preview-container">
+    <img src="/inspect-transparent.png" id="inspect-img" />
+  </div>
+</body>
+</html>
