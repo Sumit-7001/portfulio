@@ -7,7 +7,7 @@ const timeline = [
     role: 'B.Tech in Computer Science & Engineering',
     desc: 'Currently pursuing B.Tech CSE with a CGPA of 9.72/10. Focusing on AI/ML, Data Structures & Algorithms, and Web Development.',
     badge: 'education',
-    icon: '🎓'
+    img: '/images/milestone_education.png'
   },
   {
     company: 'AI Resume Analyzer',
@@ -15,7 +15,7 @@ const timeline = [
     role: 'Full-Stack AI Project',
     desc: 'Developed an AI-based resume analyzer providing feedback on skills, ATS score, and improvement suggestions. Used React.js, Node.js, Python, and OpenAI API.',
     badge: 'project',
-    icon: '🤖'
+    img: '/images/milestone_resume.png'
   },
   {
     company: 'AI Chatbot — LangChain',
@@ -23,7 +23,7 @@ const timeline = [
     role: 'AI/ML Project',
     desc: 'Built a chatbot using Python and LangChain with integrated LLM models for answering user queries. Implemented embeddings for semantic search.',
     badge: 'project',
-    icon: '💬'
+    img: '/images/milestone_chatbot.png'
   },
   {
     company: 'E-Commerce Grocery Website',
@@ -31,7 +31,7 @@ const timeline = [
     role: 'Web Development Project',
     desc: 'Created a full-featured e-commerce grocery platform using React.js, HTML, CSS, and JavaScript with responsive design and dynamic product management.',
     badge: 'project',
-    icon: '🛒'
+    img: '/images/milestone_grocery.png'
   },
 ];
 
@@ -268,7 +268,11 @@ export default function Experience() {
                     className={`journey-milestone ${isReached ? 'reached' : ''} ${activeMilestone === idx ? 'active' : ''}`}
                     style={{ left: `${leftVal}%` }}
                   >
-                    <span className="journey-milestone-icon">{timeline[idx].icon}</span>
+                    <img
+                      src={timeline[idx].img}
+                      alt={timeline[idx].company}
+                      className="journey-milestone-img"
+                    />
                     <div className="journey-milestone-pulse"></div>
                   </div>
                 );
