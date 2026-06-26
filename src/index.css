@@ -1878,6 +1878,7 @@ button {
   max-width: 540px;
   margin: 0 auto;
   line-height: 1.7;
+  font-weight: 600;
 }
 
 .testimonials-carousel {

@@ -277,9 +277,13 @@ function SkillCard({ skill, index }) {
               key={item}
               className="skill-tag"
               style={{
-                '--hover-bg': `${info.color}15`,
-                '--hover-border': `${info.color}33`,
+                '--hover-bg': `${info.color}25`,
+                '--hover-border': `${info.color}55`,
                 '--hover-color': info.color,
+                color: info.color,
+                fontWeight: '600',
+                background: `${info.color}0f`,
+                borderColor: `${info.color}25`,
               }}
             >
               {info.icon}
