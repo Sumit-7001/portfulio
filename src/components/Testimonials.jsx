@@ -2,70 +2,37 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const skillCategories = [
   {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="16 18 22 12 16 6" />
-        <polyline points="8 6 2 12 8 18" />
-      </svg>
-    ),
+    iconPath: '/images/skill_programming.png',
     color: '#8b5cf6',
     title: 'Programming Languages',
     items: ['Python', 'C', 'JavaScript'],
   },
   {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 2a4 4 0 0 0-4 4c0 2 1 3 2 4l-3 8h10l-3-8c1-1 2-2 2-4a4 4 0 0 0-4-4z" />
-        <path d="M12 18v4" />
-        <path d="M8 22h8" />
-      </svg>
-    ),
+    iconPath: '/images/skill_ai.png',
     color: '#06b6d4',
     title: 'AI / Machine Learning',
     items: ['Generative AI', 'LangChain', 'LLM Applications', 'Prompt Engineering', 'Embeddings'],
   },
   {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="3" y="3" width="18" height="18" rx="2" />
-        <path d="M3 9h18" />
-        <path d="M9 21V9" />
-      </svg>
-    ),
+    iconPath: '/images/skill_web.png',
     color: '#ec4899',
     title: 'Web & Databases',
     items: ['React.js', 'Node.js', 'HTML/CSS', 'MongoDB', 'MySQL'],
   },
   {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
-      </svg>
-    ),
+    iconPath: '/images/skill_tools.png',
     color: '#f97316',
     title: 'Tools & Platforms',
     items: ['Git', 'GitHub', 'VS Code', 'Jupyter Notebook'],
   },
   {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" />
-        <path d="M12 6v6l4 2" />
-      </svg>
-    ),
+    iconPath: '/images/skill_fundamentals.png',
     color: '#10b981',
     title: 'CS Fundamentals',
     items: ['Data Structures & Algorithms', 'OOP', 'Operating Systems'],
   },
   {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-        <circle cx="9" cy="7" r="4" />
-        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-      </svg>
-    ),
+    iconPath: '/images/skill_professional.png',
     color: '#3b82f6',
     title: 'Professional Skills',
     items: ['Problem Solving', 'Analytical Thinking', 'Team Collaboration', 'Communication'],
@@ -293,12 +260,13 @@ function SkillCard({ skill, index }) {
     >
       <div
         className="testimonial-avatar"
-        style={{
-          background: `${skill.color}22`,
-          color: skill.color,
-        }}
+        style={{ background: 'transparent' }}
       >
-        <span>{skill.icon}</span>
+        <img
+          src={skill.iconPath}
+          alt={skill.title}
+          style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+        />
       </div>
       <p className="testimonial-name" style={{ marginBottom: 16 }}>{skill.title}</p>
       <div className="testimonial-tags">
