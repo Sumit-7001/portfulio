@@ -2053,15 +2053,16 @@ button {
   background: rgba(255,255,255,0.04);
 }
 
-.contact-icon {
-  color: var(--color-primary-light);
+.contact-custom-icon {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
   flex-shrink: 0;
-  transition: transform var(--transition-base), color var(--transition-base);
+  transition: transform var(--transition-base);
 }
 
-.contact-item:hover .contact-icon {
+.contact-item:hover .contact-custom-icon {
   transform: scale(1.15);
-  color: var(--color-cyan);
 }
 
 .contact-item span {
@@ -2118,12 +2119,17 @@ button {
   gap: 10px;
 }
 
-.btn-icon {
+.btn-icon,
+.contact-custom-btn-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
   flex-shrink: 0;
   transition: transform var(--transition-base);
 }
 
-.contact-links a:hover .btn-icon {
+.contact-links a:hover .btn-icon,
+.contact-links a:hover .contact-custom-btn-icon {
   transform: rotate(-8deg) scale(1.1);
 }
 
