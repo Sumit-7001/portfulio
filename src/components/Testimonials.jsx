@@ -268,7 +268,7 @@ function SkillCard({ skill, index }) {
           style={{ width: '100%', height: '100%', objectFit: 'contain' }}
         />
       </div>
-      <p className="testimonial-name" style={{ marginBottom: 16 }}>{skill.title}</p>
+      <p className="testimonial-name" style={{ marginBottom: 16, color: skill.color }}>{skill.title}</p>
       <div className="testimonial-tags">
         {skill.items.map((item) => {
           const info = getSkillIconAndColor(item);
