@@ -54,23 +54,41 @@ export default function Contact() {
               <h3>Contact Info</h3>
               <div className="contact-info-list">
                 <div
-                  className="contact-item"
+                  className="contact-item contact-item-interactive"
                   onClick={() => copyToClipboard('sahoosumit7001@gmail.com', 'Email')}
                   title="Click to copy"
                 >
-                  <img src="/images/icon_gmail.png" alt="Email" className="contact-custom-icon" />
+                  <div className="contact-icon-wrapper">
+                    <img src="/images/icon_gmail.png" alt="Email" className="contact-custom-icon" />
+                  </div>
                   <span>sahoosumit7001@gmail.com</span>
+                  <div className="contact-item-copy" aria-label="Copy Email">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="copy-svg">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+                    </svg>
+                  </div>
                 </div>
                 <div
-                  className="contact-item"
+                  className="contact-item contact-item-interactive"
                   onClick={() => copyToClipboard('+917001340696', 'Phone')}
                   title="Click to copy"
                 >
-                  <img src="/images/icon_phone.png" alt="Phone" className="contact-custom-icon" />
+                  <div className="contact-icon-wrapper">
+                    <img src="/images/icon_phone.png" alt="Phone" className="contact-custom-icon" />
+                  </div>
                   <span>+91 7001340696</span>
+                  <div className="contact-item-copy" aria-label="Copy Phone Number">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="copy-svg">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+                    </svg>
+                  </div>
                 </div>
                 <div className="contact-item">
-                  <img src="/images/icon_location.png" alt="Location" className="contact-custom-icon" />
+                  <div className="contact-icon-wrapper">
+                    <img src="/images/icon_location.png" alt="Location" className="contact-custom-icon" />
+                  </div>
                   <span>West Bengal, India</span>
                 </div>
               </div>
@@ -78,7 +96,9 @@ export default function Contact() {
               <h3>Languages</h3>
               <div className="contact-info-list">
                 <div className="contact-item">
-                  <img src="/images/icon_globe.png" alt="Languages" className="contact-custom-icon" />
+                  <div className="contact-icon-wrapper">
+                    <img src="/images/icon_globe.png" alt="Languages" className="contact-custom-icon" />
+                  </div>
                   <span>English · Hindi · Bengali</span>
                 </div>
               </div>
