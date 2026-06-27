@@ -1325,8 +1325,8 @@ button {
 .journey-milestone {
   position: absolute;
   top: 50%;
-  width: 24px;
-  height: 24px;
+  width: 72px;
+  height: 72px;
   z-index: 10;
   transform: translate(-50%, -50%);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1335,26 +1335,25 @@ button {
   justify-content: center;
 }
 
-.journey-milestone::before {
-  content: '';
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.35);
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+.journey-milestone.active {
+  transform: translate(-50%, -50%) scale(1.15);
+}
+
+.journey-milestone-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5)) grayscale(0.9) opacity(0.5);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 2;
 }
 
-.journey-milestone.reached::before {
-  background: var(--color-primary);
-  box-shadow: 0 0 12px var(--color-primary);
+.journey-milestone.reached .journey-milestone-icon {
+  filter: drop-shadow(0 3px 6px rgba(41, 151, 255, 0.3)) grayscale(0) opacity(0.9);
 }
 
-.journey-milestone.active::before {
-  background: var(--color-cyan);
-  box-shadow: 0 0 15px var(--color-cyan), 0 0 30px var(--color-cyan);
-  transform: scale(1.3);
+.journey-milestone.active .journey-milestone-icon {
+  filter: drop-shadow(0 4px 10px rgba(6, 182, 212, 0.6)) grayscale(0) opacity(1);
 }
 
 .journey-milestone-pulse {

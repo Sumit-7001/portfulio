@@ -268,6 +268,11 @@ export default function Experience() {
                     className={`journey-milestone ${isReached ? 'reached' : ''} ${activeMilestone === idx ? 'active' : ''}`}
                     style={{ left: `${leftVal}%` }}
                   >
+                    <img
+                      src="/images/milestone_marker.png"
+                      alt="Milestone marker"
+                      className="journey-milestone-icon"
+                    />
                     <div className="journey-milestone-pulse"></div>
                   </div>
                 );
