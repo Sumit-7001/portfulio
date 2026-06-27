@@ -2,9 +2,10 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import project1 from '../assets/project-1.png';
 import project2 from '../assets/project-2.png';
 import project3 from '../assets/project-3.png';
-import project4 from '../assets/project-4.png';
-import project5 from '../assets/project-5.png';
-import project6 from '../assets/project-6.png';
+import projectMarkethub from '../assets/project-markethub.png';
+import projectMarkethubAdmin from '../assets/project-markethub-admin.png';
+import projectPortfolioLive from '../assets/project-portfolio-live.png';
+import projectLoginSystem from '../assets/project-login-system.png';
 
 const projects = [
   {
@@ -20,28 +21,32 @@ const projects = [
     desc: 'Chatbot powered by LLMs with semantic search using embeddings.',
   },
   {
-    img: project4,
-    title: 'E-Commerce Grocery Website',
+    img: projectMarkethub,
+    title: 'MarketHub — E-Commerce Store',
     category: 'React.js · HTML · CSS · JavaScript',
-    desc: 'Full-featured grocery e-commerce platform with responsive design.',
+    desc: 'Full-featured online shopping platform (MarketHub) featuring product categories, search, shopping cart, and a responsive interface.',
+    link: 'https://e-shop-project-six.vercel.app/',
   },
   {
-    img: project5,
-    title: 'LLM Prompt Engineering',
-    category: 'Python · OpenAI · Prompt Design',
-    desc: 'Exploring advanced prompt techniques to build efficient AI applications.',
+    img: projectMarkethubAdmin,
+    title: 'MarketHub — Admin Dashboard',
+    category: 'React.js · HTML · CSS · Dashboard Analytics',
+    desc: 'Store analytics dashboard displaying revenue, orders, customer registrations, conversion rates, and stock alerts.',
+    link: 'https://e-shop-project-six.vercel.app/admin',
   },
   {
-    img: project2,
+    img: projectPortfolioLive,
     title: 'Portfolio Website',
     category: 'React.js · Vite · CSS',
-    desc: 'Modern, responsive developer portfolio with smooth animations.',
+    desc: 'Modern, responsive developer portfolio (this website) featuring custom scroll-driven journey animations and premium glassmorphic UI elements.',
+    link: 'https://portfulio-beryl.vercel.app/',
   },
   {
-    img: project6,
-    title: 'DSA Problem Solving',
-    category: 'Python · C · Algorithms',
-    desc: 'Solving complex data structures & algorithms problems on coding platforms.',
+    img: projectLoginSystem,
+    title: 'Secure Login & Authentication Portal',
+    category: 'React.js · CSS · MPIN Security · Vercel',
+    desc: 'Secure multi-tab user login, signup, and admin login portal requiring email verification and a secure 4-digit MPIN authorization.',
+    link: 'https://frontend-phi-rosy-97.vercel.app/login',
   },
 ];
 
@@ -87,12 +92,8 @@ export default function Portfolio() {
 function PortfolioCard({ project, index }) {
   const [ref, visible] = useScrollAnimation({ threshold: 0.1 });
 
-  return (
-    <div
-      ref={ref}
-      className={`portfolio-card fade-up${visible ? ' visible' : ''}`}
-      style={{ transitionDelay: `${index * 0.1}s` }}
-    >
+  const cardContent = (
+    <>
       <img
         src={project.img}
         alt={project.title}
@@ -104,7 +105,42 @@ function PortfolioCard({ project, index }) {
         <h3>{project.title}</h3>
         <p>{project.category}</p>
         <p className="portfolio-card-desc">{project.desc}</p>
+        {project.link && (
+          <span className="portfolio-card-link-btn">
+            Live Demo
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: 14, height: 14, marginLeft: 4 }}>
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line x1="10" y1="14" x2="21" y2="3" />
+            </svg>
+          </span>
+        )}
       </div>
+    </>
+  );
+
+  if (project.link) {
+    return (
+      <a
+        ref={ref}
+        href={project.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`portfolio-card fade-up${visible ? ' visible' : ''}`}
+        style={{ transitionDelay: `${index * 0.1}s`, display: 'block' }}
+      >
+        {cardContent}
+      </a>
+    );
+  }
+
+  return (
+    <div
+      ref={ref}
+      className={`portfolio-card fade-up${visible ? ' visible' : ''}`}
+      style={{ transitionDelay: `${index * 0.1}s` }}
+    >
+      {cardContent}
     </div>
   );
 }
