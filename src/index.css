@@ -1325,8 +1325,8 @@ button {
 .journey-milestone {
   position: absolute;
   top: 50%;
-  width: 44px;
-  height: 44px;
+  width: 24px;
+  height: 24px;
   z-index: 10;
   transform: translate(-50%, -50%);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1335,35 +1335,33 @@ button {
   justify-content: center;
 }
 
-.journey-milestone.reached {
-  /* Clean, no blue background or border overlay */
-}
-
-.journey-milestone.active {
-  transform: translate(-50%, -50%) scale(1.3);
-}
-
-.journey-milestone-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5)) grayscale(0.8) opacity(0.5);
+.journey-milestone::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 2;
 }
 
-.journey-milestone.reached .journey-milestone-img {
-  filter: drop-shadow(0 3px 6px rgba(255, 255, 255, 0.1)) grayscale(0) opacity(0.9);
+.journey-milestone.reached::before {
+  background: var(--color-primary);
+  box-shadow: 0 0 12px var(--color-primary);
 }
 
-.journey-milestone.active .journey-milestone-img {
-  filter: drop-shadow(0 4px 10px rgba(255, 255, 255, 0.4)) grayscale(0) opacity(1);
+.journey-milestone.active::before {
+  background: var(--color-cyan);
+  box-shadow: 0 0 15px var(--color-cyan), 0 0 30px var(--color-cyan);
+  transform: scale(1.3);
 }
 
 .journey-milestone-pulse {
   position: absolute;
-  inset: -8px;
+  inset: -10px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1.5px solid var(--color-cyan);
   opacity: 0;
   pointer-events: none;
 }
@@ -1783,29 +1781,32 @@ button {
 }
 
 .portfolio-card {
-  border-radius: var(--radius-xl);
+  border-radius: 16px;
   overflow: hidden;
   position: relative;
   cursor: pointer;
   aspect-ratio: 4 / 3;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  transition: transform var(--transition-slow), box-shadow var(--transition-slow);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  transition: transform var(--transition-slow), box-shadow var(--transition-slow), border-color var(--transition-slow);
 }
 
 .portfolio-card:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  border-color: rgba(41, 151, 255, 0.35);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 20px rgba(41, 151, 255, 0.15);
 }
 
 .portfolio-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
 }
 
 .portfolio-card:hover img {
-  transform: scale(1.1);
+  transform: scale(1.06);
+  filter: brightness(0.6);
 }
 
 .portfolio-card-overlay {
@@ -1824,8 +1825,8 @@ button {
 
 .portfolio-card:hover .portfolio-card-overlay {
   opacity: 1;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
 }
 
 .portfolio-card-overlay h3 {

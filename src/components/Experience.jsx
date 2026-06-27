@@ -268,11 +268,6 @@ export default function Experience() {
                     className={`journey-milestone ${isReached ? 'reached' : ''} ${activeMilestone === idx ? 'active' : ''}`}
                     style={{ left: `${leftVal}%` }}
                   >
-                    <img
-                      src={timeline[idx].img}
-                      alt={timeline[idx].company}
-                      className="journey-milestone-img"
-                    />
                     <div className="journey-milestone-pulse"></div>
                   </div>
                 );
