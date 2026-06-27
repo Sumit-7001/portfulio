@@ -65,7 +65,7 @@ export default function Services() {
             {technicalSkills.map((s, i) => (
               <div
                 key={s.title}
-                className="service-card"
+                className={`service-card ${s.color}`}
                 style={{ transitionDelay: `${i * 0.1}s` }}
               >
                 <div className={`service-icon ${s.color}`}>{s.icon}</div>

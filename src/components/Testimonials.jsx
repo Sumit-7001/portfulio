@@ -2,38 +2,38 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const skillCategories = [
   {
-    iconPath: '/images/skill_programming.png',
-    color: '#8b5cf6',
+    iconPath: '/images/skill_programming_new.png',
+    color: '#2997ff',
     title: 'Programming Languages',
     items: ['Python', 'C', 'JavaScript'],
   },
   {
-    iconPath: '/images/skill_ai.png',
+    iconPath: '/images/skill_ai_new.png',
     color: '#06b6d4',
     title: 'AI / Machine Learning',
     items: ['Generative AI', 'LangChain', 'LLM Applications', 'Prompt Engineering', 'Embeddings'],
   },
   {
-    iconPath: '/images/skill_web.png',
-    color: '#ec4899',
+    iconPath: '/images/skill_web_new.png',
+    color: '#8b5cf6',
     title: 'Web & Databases',
     items: ['React.js', 'Node.js', 'HTML/CSS', 'MongoDB', 'MySQL'],
   },
   {
-    iconPath: '/images/skill_tools.png',
-    color: '#f97316',
+    iconPath: '/images/skill_tools_new.png',
+    color: '#2997ff',
     title: 'Tools & Platforms',
     items: ['Git', 'GitHub', 'VS Code', 'Jupyter Notebook'],
   },
   {
-    iconPath: '/images/skill_fundamentals.png',
-    color: '#10b981',
+    iconPath: '/images/skill_fundamentals_new.png',
+    color: '#06b6d4',
     title: 'CS Fundamentals',
     items: ['Data Structures & Algorithms', 'OOP', 'Operating Systems'],
   },
   {
-    iconPath: '/images/skill_professional.png',
-    color: '#3b82f6',
+    iconPath: '/images/skill_professional_new.png',
+    color: '#8b5cf6',
     title: 'Professional Skills',
     items: ['Problem Solving', 'Analytical Thinking', 'Team Collaboration', 'Communication'],
   },
@@ -256,37 +256,25 @@ function SkillCard({ skill, index }) {
     <div
       ref={ref}
       className={`testimonial-card fade-up${visible ? ' visible' : ''}`}
-      style={{ transitionDelay: `${index * 0.08}s` }}
+      style={{
+        transitionDelay: `${index * 0.08}s`,
+        '--card-accent': skill.color,
+        '--card-accent-glow': `${skill.color}20`
+      }}
     >
-      <div
-        className="testimonial-avatar"
-        style={{ background: 'transparent' }}
-      >
+      <div className="testimonial-avatar">
         <img
           src={skill.iconPath}
           alt={skill.title}
-          style={{ width: '100%', height: '100%', objectFit: 'contain' }}
         />
       </div>
-      <p className="testimonial-name" style={{ marginBottom: 12, color: skill.color }}>{skill.title}</p>
+      <p className="testimonial-name">{skill.title}</p>
       <div className="testimonial-tags">
         {skill.items.map((item) => {
           const info = getSkillIconAndColor(item);
           return (
-            <span
-              key={item}
-              className="skill-tag"
-              style={{
-                '--hover-bg': `${info.color}25`,
-                '--hover-border': `${info.color}55`,
-                '--hover-color': info.color,
-                color: info.color,
-                fontWeight: '600',
-                background: `${info.color}0f`,
-                borderColor: `${info.color}25`,
-              }}
-            >
-              {info.icon}
+            <span key={item} className="skill-tag">
+              <span className="skill-tag-icon" style={{ color: info.color }}>{info.icon}</span>
               {item}
             </span>
           );
