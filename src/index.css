@@ -1328,7 +1328,7 @@ button {
   width: 72px;
   height: 72px;
   z-index: 10;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, calc(-50% - 12px));
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   align-items: center;
@@ -1336,7 +1336,7 @@ button {
 }
 
 .journey-milestone.active {
-  transform: translate(-50%, -50%) scale(1.15);
+  transform: translate(-50%, calc(-50% - 12px)) scale(1.15);
 }
 
 .journey-milestone-icon {
@@ -1379,6 +1379,26 @@ button {
     transform: scale(2.4);
     opacity: 0;
   }
+}
+
+/* ---------- Traffic Light ---------- */
+.journey-traffic-light {
+  position: absolute;
+  right: 5%;
+  bottom: 142px;
+  height: 165px;
+  width: auto;
+  z-index: 12;
+  display: flex;
+  align-items: flex-end;
+  pointer-events: none;
+}
+
+.journey-traffic-light-img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.7));
 }
 
 /* ---------- Car Layout ---------- */

@@ -278,6 +278,15 @@ export default function Experience() {
                 );
               })}
 
+              {/* Traffic Light at the end of the road */}
+              <div className="journey-traffic-light">
+                <img
+                  src="/images/traffic_light.png"
+                  alt="Traffic light"
+                  className="journey-traffic-light-img"
+                />
+              </div>
+
               <div
                 className="journey-car-wrapper"
                 style={{
