@@ -13,12 +13,16 @@ const projects = [
     title: 'AI Resume Analyzer',
     category: 'React.js · Node.js · Python · OpenAI API',
     desc: 'AI-based resume analyzer providing feedback on skills, ATS score & improvement suggestions.',
+    link: 'https://github.com/Sumit-7001',
+    linkLabel: 'View on GitHub',
   },
   {
     img: project1,
     title: 'AI Chatbot — LangChain',
     category: 'Python · LangChain · LLM · Embeddings',
     desc: 'Chatbot powered by LLMs with semantic search using embeddings.',
+    link: 'https://github.com/Sumit-7001',
+    linkLabel: 'View on GitHub',
   },
   {
     img: projectMarkethub,
@@ -107,7 +111,7 @@ function PortfolioCard({ project, index }) {
         <p className="portfolio-card-desc">{project.desc}</p>
         {project.link && (
           <span className="portfolio-card-link-btn">
-            Live Demo
+            {project.linkLabel || 'Live Demo'}
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: 14, height: 14, marginLeft: 4 }}>
               <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
               <polyline points="15 3 21 3 21 9" />

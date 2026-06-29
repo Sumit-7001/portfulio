@@ -457,7 +457,7 @@ button {
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--color-white);
+  background: var(--gradient-accent);
   border-radius: 2px;
   transition: width var(--transition-base);
 }
@@ -969,6 +969,19 @@ button {
   position: relative;
 }
 
+/* Gradient fade from hero (dark) into services (light) */
+.services::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.06) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
 .services-inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1079,7 +1092,7 @@ button {
 }
 
 .service-card.teal p {
-  color: #000000;
+  color: #4b5563;
 }
 
 .service-card.orange h3 {
@@ -1087,7 +1100,7 @@ button {
 }
 
 .service-card.orange p {
-  color: #000000;
+  color: #4b5563;
 }
 
 .service-card.yellow h3 {
@@ -1095,7 +1108,7 @@ button {
 }
 
 .service-card.yellow p {
-  color: #000000;
+  color: #4b5563;
 }
 
 .services-content {
@@ -1740,6 +1753,20 @@ button {
   padding: var(--section-padding);
   background: var(--color-bg-light);
   color: var(--color-text-dark);
+  position: relative;
+}
+
+/* Gradient fade from journey (dark) into portfolio (light) */
+.portfolio::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.06) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .portfolio-header {
@@ -1805,15 +1832,15 @@ button {
   position: relative;
   cursor: pointer;
   aspect-ratio: 4 / 3;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   transition: transform var(--transition-slow), box-shadow var(--transition-slow), border-color var(--transition-slow);
 }
 
 .portfolio-card:hover {
   transform: translateY(-8px) scale(1.02);
-  border-color: rgba(41, 151, 255, 0.35);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 20px rgba(41, 151, 255, 0.15);
+  border-color: rgba(41, 151, 255, 0.25);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 20px rgba(41, 151, 255, 0.08);
 }
 
 .portfolio-card img {
@@ -1913,6 +1940,7 @@ button {
   padding: var(--section-padding);
   background: var(--color-bg);
   position: relative;
+  overflow: hidden;
 }
 
 .testimonials::before {
@@ -1925,6 +1953,21 @@ button {
   height: 600px;
   background: radial-gradient(circle, rgba(41, 151, 255, 0.05) 0%, rgba(139, 92, 246, 0.03) 50%, transparent 70%);
   pointer-events: none;
+}
+
+/* Subtle dot grid pattern for consistency with hero section */
+.testimonials::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(139, 92, 246, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 92, 246, 0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, black 10%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, black 10%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .testimonials-header {
@@ -1982,15 +2025,17 @@ button {
   align-items: center;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(20px);
-  min-height: 270px;
+  min-height: 280px;
   height: 100%;
+  position: relative;
+  z-index: 1;
 }
 
 .testimonial-card:hover {
   transform: translateY(-8px);
-  background: rgba(25, 25, 30, 0.75);
+  background: rgba(25, 25, 30, 0.85);
   border-color: var(--card-accent);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 30px var(--card-accent-glow);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 40px var(--card-accent-glow), 0 0 80px var(--card-accent-glow);
 }
 
 .testimonial-avatar {
@@ -2216,20 +2261,22 @@ button {
   align-items: center;
   position: relative;
   width: 100%;
-  margin-left: -100px;
-  margin-right: -200px;
+  margin-left: -40px;
+  margin-right: -60px;
   z-index: 1;
 }
 
 .contact-illustration {
-  max-width: 140%;
-  height: 480px;
+  max-width: 120%;
+  height: 420px;
   object-fit: contain;
   transition: transform var(--transition-base);
+  filter: drop-shadow(0 20px 40px rgba(139, 92, 246, 0.1));
 }
 
 .contact-illustration:hover {
   transform: translateY(-8px) scale(1.03);
+  filter: drop-shadow(0 25px 50px rgba(139, 92, 246, 0.15));
 }
 
 .contact-right {
@@ -2684,11 +2731,14 @@ button {
   .contact-middle {
     justify-content: center;
     margin: 30px 0 10px 0;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .contact-illustration {
     max-width: 100%;
     height: 320px;
+    filter: none;
   }
 
 
@@ -2814,6 +2864,12 @@ button {
   .contact-illustration {
     max-width: 100%;
     height: 240px;
+    filter: none;
+  }
+
+  .contact-middle {
+    margin-left: 0;
+    margin-right: 0;
   }
 
 
